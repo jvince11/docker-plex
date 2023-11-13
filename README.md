@@ -87,12 +87,15 @@ Hardware acceleration users for Intel Quicksync will need to mount their /dev/dr
 We will automatically ensure the abc user inside of the container has the proper permissions to access this device.
 
 ### Nvidia
+*updated as a result of `nvidia-docker` DEPRECATION*
 
 Hardware acceleration users for Nvidia will need to install the container runtime provided by Nvidia on their host, instructions can be found here:
 
-https://github.com/NVIDIA/nvidia-docker
+https://github.com/NVIDIA/nvidia-container-toolkit
 
-We automatically add the necessary environment variable that will utilise all the features available on a GPU on the host. Once nvidia-docker is installed on your host you will need to re/create the docker container with the nvidia container runtime `--runtime=nvidia` and add an environment variable `-e NVIDIA_VISIBLE_DEVICES=all` (can also be set to a specific gpu's UUID, this can be discovered by running `nvidia-smi --query-gpu=gpu_name,gpu_uuid --format=csv` ). NVIDIA automatically mounts the GPU and drivers from your host into the plex docker.
+We automatically add the necessary environment variable that will utilise all the features available on a GPU on the host. 
+- Once `nvidia-container-toolkit`, `nvidia-container-runtime` and `nvidia-docker2` is installed on your host follow the steps from the [installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) *Note: last 2 packages may not be required depending on host's docker version* 
+- add an environment variable `-e NVIDIA_VISIBLE_DEVICES=all` (can also be set to a specific gpu's UUID, this can be discovered by running `nvidia-smi --query-gpu=gpu_name,gpu_uuid --format=csv` ). NVIDIA automatically mounts the GPU and drivers from your host into the plex docker.
 
 ## Usage
 
