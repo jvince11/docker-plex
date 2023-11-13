@@ -13,6 +13,7 @@ LABEL maintainer="thelamer"
 
 #Add needed nvidia environment variables for https://github.com/NVIDIA/nvidia-docker
 ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility"
+ENV NVIDIA_VISIBLE_DEVICES="all"
 
 # global environment settings
 ENV DEBIAN_FRONTEND="noninteractive" \
